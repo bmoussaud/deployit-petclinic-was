@@ -1,0 +1,128 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.xebialabs.deployit.demos</groupId>
+    <artifactId>deployit-petclinic-parent</artifactId>
+    <version>1.0</version>
+	</parent>
+	<artifactId>deployit-petclinic-was</artifactId>
+	<packaging>dar</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>PetClinic Deployit DAR</name>
+	<url>http://maven.apache.org</url>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.xebialabs.deployit</groupId>
+				<artifactId>maven-deployit-plugin</artifactId>
+				<version>3.5.1-SNAPSHOT</version>
+				<extensions>true</extensions>
+				<executions>
+					<execution>
+						<id>deploy-id</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<testMode>false</testMode>
+					<skipMode>false</skipMode>
+
+					<deletePreviouslyDeployedDar>true</deletePreviouslyDeployedDar>
+					<serverAddress>localhost</serverAddress>
+					<deployables>
+						<deployable>
+							<name>petclinic</name>
+							<type>jee.War</type>
+						        <groupId>com.xebialabs.deployit.demos</groupId>
+							<artifactId>PetClinic</artifactId>
+						</deployable>
+						<deployable>
+							<name>petclinic-backend</name>
+							<type>jee.War</type>
+						        <groupId>com.xebialabs.deployit.demos</groupId>
+							<artifactId>PetClinic-Backend</artifactId>
+						</deployable>
+						<deployable>
+							<type>jboss.Library</type>
+							<groupId>mysql</groupId>
+							<artifactId>mysql-connector-java</artifactId>
+							<name>mysql-connection-java.jar</name>
+						</deployable>
+						<deployable>
+							<name>configuration</name>
+							<type>jboss.ConfigurationFolder</type>
+							<location>config</location>
+						</deployable>
+						<deployable>
+							<name>petclinicDatasource</name>
+							<type>jboss.TransactionalDatasourceSpec</type>
+							<jndiName>jndi/petclinic</jndiName>
+							<driverClass>com.mysql.jdbc.Driver</driverClass>
+							<connectionUrl>jdbc:mysql://localhost/petclinic</connectionUrl>
+							<userName>{{DB_USERNAME}}</userName>
+							<password>{{DB_PASSWORD}}</password>
+						</deployable>
+					</deployables>
+
+					<environmentId>Environments/JBoss-Dev</environmentId>
+
+					<deployeds>
+						<deployed>
+							<id>Infrastructure/host-weblogic-vm/configuration</id>
+							<type>file.DeployedFolder</type>
+							<targetPath>/tmp/conf</targetPath>
+							<placeholders>
+								<entry>
+									<k>title</k>
+									<v>Deployment From Maven</v>
+								</entry>
+							</placeholders>
+						</deployed>
+						<deployed>
+							<id>Infrastructure/host-weblogic-vm/mysql-connector-java</id>
+							<type>file.DeployedArchive</type>
+							<targetPath>/tmp/lib1</targetPath>
+						</deployed>
+						<deployed>
+							<id>Infrastructure/mydomain/MyCluster/petclinicDS</id>
+							<type>wls.DataSource</type>
+							<username>scott</username>
+							<password>tiger</password>
+						</deployed>
+					</deployeds>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+    <dependency>
+      <groupId>com.xebialabs.deployit.demos</groupId>
+			<artifactId>PetClinic</artifactId>
+			<version>1.0</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+      <groupId>com.xebialabs.deployit.demos</groupId>
+			<artifactId>PetClinic-Backend</artifactId>
+			<version>1.2</version>
+			<type>war</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.13</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+</project>
+
