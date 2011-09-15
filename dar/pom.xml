@@ -59,14 +59,51 @@
 							<type>jboss.ConfigurationFolder</type>
 							<location>config</location>
 						</deployable>
+
+                        <deployable>
+                            <name>petWmqQcf</name>
+                            <type>was.WmqQueueConnectionFactorySpec</type>
+                            <jndiName>jms/petQCF</jndiName>
+                            <host>wmq-60-unix</host>
+                            <port>1923</port>
+                            <!--
+                            <transportType></transportType>
+                            -->
+                            <ConnectionPool_connectionTimeout>23</ConnectionPool_connectionTimeout>
+                            <ConnectionPool_maxConnections>1</ConnectionPool_maxConnections>
+                            <ConnectionPool_minConnections>0</ConnectionPool_minConnections>
+                        </deployable>
+
+                        <deployable>
+                            <name>petWmQueue</name>
+                            <type>was.WmqQueueSpec</type>
+                            <queueName>petQueue</queueName>
+                            <useRFH2>false</useRFH2>
+                        </deployable>
+
+                        <deployable>
+							<name>petclinic JAAS</name>
+							<type>was.JAASSpec</type>
+							<username>scott</username>
+                            <password>tiger</password>
+						</deployable>
+
+                        <deployable>
+                            <name>Oracle JDBC Provider</name>
+                            <type>was.OracleJDBCProviderSpec</type>
+                        </deployable>
+
 						<deployable>
 							<name>petclinicDatasource</name>
-							<type>jboss.TransactionalDatasourceSpec</type>
+							<type>was.OracleDatasourceSpec</type>
 							<jndiName>jndi/petclinic</jndiName>
-							<driverClass>com.mysql.jdbc.Driver</driverClass>
-							<connectionUrl>jdbc:mysql://localhost/petclinic</connectionUrl>
-							<userName>{{DB_USERNAME}}</userName>
-							<password>{{DB_PASSWORD}}</password>
+                            <jdbcProvider>Oracle JDBC Provider</jdbcProvider>
+							<datasourceHelperClassname>com.ibm.websphere.rsadapter.OracleDataStoreHelper</datasourceHelperClassname>
+							<URL>jdbc:oracle:thin:@myhost:1521:xe</URL>
+                            <ConnectionPool_connectionTimeout>173</ConnectionPool_connectionTimeout>
+                            <ConnectionPool_maxConnections>1</ConnectionPool_maxConnections>
+                            <ConnectionPool_minConnections>0</ConnectionPool_minConnections>
+                            <jaasEntry></jaasEntry>
 						</deployable>
 					</deployables>
 
