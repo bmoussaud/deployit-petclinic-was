@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.xebialabs.deployit.demos</groupId>
+        <groupId>com.xebialabs.deployit.demos.was</groupId>
         <artifactId>deployit-petclinic-parent</artifactId>
         <version>1.0</version>
     </parent>
@@ -39,14 +39,14 @@
                         <deployable>
                             <name>petclinic</name>
                             <type>was.War</type>
-                            <groupId>com.xebialabs.deployit.demos</groupId>
+                            <groupId>com.xebialabs.deployit.demos.was</groupId>
                             <artifactId>PetClinic</artifactId>
                             <contextRoot>petclinic</contextRoot>
                         </deployable>
                         <deployable>
                             <name>petclinic-backend</name>
                             <type>was.War</type>
-                            <groupId>com.xebialabs.deployit.demos</groupId>
+                            <groupId>com.xebialabs.deployit.demos.was</groupId>
                             <artifactId>PetClinic-Backend</artifactId>
                             <contextRoot>petclinic-backend</contextRoot>
                         </deployable>
@@ -91,7 +91,7 @@
 
                         <deployable>
                             <name>petWorker</name>
-                            <type>SessionPool</type>
+                            <type>was.WorkManagerSpec</type>
                             <jndiName>worker/petWorker</jndiName>
                             <numAlarmThreads>1</numAlarmThreads>
                             <minThreads>0</minThreads>
@@ -105,7 +105,8 @@
                             <type>was.OracleDatasourceSpec</type>
                             <jndiName>jndi/petclinic</jndiName>
                             <jdbcProvider>Oracle JDBC Provider</jdbcProvider>
-                            <datasourceHelperClassname>com.ibm.websphere.rsadapter.OracleA10gDataStoreHelper</datasourceHelperClassname>
+                            <datasourceHelperClassname>com.ibm.websphere.rsadapter.OracleA10gDataStoreHelper
+                            </datasourceHelperClassname>
                             <URL>jdbc:oracle:thin:@myhost:1521:xe</URL>
                             <ConnectionPool_connectionTimeout>173</ConnectionPool_connectionTimeout>
                             <ConnectionPool_maxConnections>1</ConnectionPool_maxConnections>
@@ -132,6 +133,7 @@
                             <maxSessions>3</maxSessions>
                             <initialStateStarted>false</initialStateStarted>
                         </deployable>
+
                     </deployables>
 
                     <environmentId>Environments/JBoss-Dev</environmentId>
@@ -143,23 +145,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.xebialabs.deployit.demos</groupId>
+            <groupId>com.xebialabs.deployit.demos.was</groupId>
             <artifactId>PetClinic</artifactId>
             <version>1.0</version>
             <type>war</type>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.xebialabs.deployit.demos</groupId>
+            <groupId>com.xebialabs.deployit.demos.was</groupId>
             <artifactId>PetClinic-Backend</artifactId>
             <version>1.2</version>
             <type>war</type>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.13</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
