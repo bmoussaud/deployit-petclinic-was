@@ -43,6 +43,7 @@
                             <artifactId>PetClinic</artifactId>
                             <contextRoot>petclinic</contextRoot>
                         </deployable>
+
                         <deployable>
                             <name>petclinic-backend</name>
                             <type>was.War</type>
@@ -50,6 +51,13 @@
                             <artifactId>PetClinic-Backend</artifactId>
                             <contextRoot>petclinic-backend</contextRoot>
                         </deployable>
+
+                        <deployable>
+                            <name>petSQL</name>
+                            <type>db.SqlScriptFolder</type>
+                            <location>sql</location>
+                        </deployable>
+
 
                         <deployable>
                             <name>petWmqQcf</name>
@@ -105,9 +113,9 @@
                             <type>was.OracleDatasourceSpec</type>
                             <jndiName>jndi/petclinic</jndiName>
                             <jdbcProvider>Oracle JDBC Provider</jdbcProvider>
-                            <datasourceHelperClassname>com.ibm.websphere.rsadapter.OracleA10gDataStoreHelper
+                            <datasourceHelperClassname>com.ibm.websphere.rsadapter.OracleA11gDataStoreHelper
                             </datasourceHelperClassname>
-                            <URL>jdbc:oracle:thin:@myhost:1521:xe</URL>
+                            <URL>jdbc:oracle:thin:@172.16.160.131:1521:xe</URL>
                             <ConnectionPool_connectionTimeout>173</ConnectionPool_connectionTimeout>
                             <ConnectionPool_maxConnections>1</ConnectionPool_maxConnections>
                             <ConnectionPool_minConnections>0</ConnectionPool_minConnections>
@@ -118,7 +126,7 @@
                             <name>Dev Configuration</name>
                             <type>was.ServerConfigurationSettings</type>
                             <JavaVirtualMachine_maximumHeapSize>128</JavaVirtualMachine_maximumHeapSize>
-                            <JavaVirtualMachineu_initialHeapSize>23</JavaVirtualMachineu_initialHeapSize>
+                            <JavaVirtualMachine_initialHeapSize>23</JavaVirtualMachine_initialHeapSize>
                             <WebContainer_enableServletCaching>true</WebContainer_enableServletCaching>
                             <SessionManager_enableCookies>true</SessionManager_enableCookies>
                         </deployable>
