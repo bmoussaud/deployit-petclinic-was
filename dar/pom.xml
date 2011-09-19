@@ -58,6 +58,11 @@
                             <location>sql</location>
                         </deployable>
 
+                        <deployable>
+                            <name>ORACLE_JDBC_DRIVER_PATH</name>
+                            <type>was.VariableSpec</type>
+                            <value>/opt/ws/7.0/universalDriver/oracle</value>
+                        </deployable>
 
                         <deployable>
                             <name>petWmqQcf</name>
@@ -113,7 +118,7 @@
                             <type>was.OracleDatasourceSpec</type>
                             <jndiName>jndi/petclinic</jndiName>
                             <jdbcProvider>Oracle JDBC Provider</jdbcProvider>
-                            <datasourceHelperClassname>com.ibm.websphere.rsadapter.OracleA11gDataStoreHelper
+                            <datasourceHelperClassname>com.ibm.websphere.rsadapter.Oracle10gDataStoreHelper
                             </datasourceHelperClassname>
                             <URL>jdbc:oracle:thin:@172.16.160.131:1521:xe</URL>
                             <ConnectionPool_connectionTimeout>173</ConnectionPool_connectionTimeout>
@@ -166,6 +171,7 @@
             <type>war</type>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
 </project>
