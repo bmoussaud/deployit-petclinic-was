@@ -33,7 +33,7 @@
                     <testMode>false</testMode>
                     <skipMode>false</skipMode>
 
-                    <deletePreviouslyDeployedDar>true</deletePreviouslyDeployedDar>
+                    <deletePreviouslyDeployedDar>false</deletePreviouslyDeployedDar>
                     <serverAddress>localhost</serverAddress>
                     <deployables>
                         <deployable>
