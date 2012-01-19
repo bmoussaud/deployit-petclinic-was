@@ -51,13 +51,13 @@
                             <artifactId>PetClinic-Backend</artifactId>
                             <contextRoot>petclinic-backend</contextRoot>
                         </deployable>
-
+<!--
                         <deployable>
                             <name>petSQL</name>
                             <type>db.SqlScriptFolder</type>
                             <location>sql</location>
                         </deployable>
-
+-->
                         <deployable>
                             <name>ORACLE_JDBC_DRIVER_PATH</name>
                             <type>was.VariableSpec</type>
@@ -149,7 +149,7 @@
 
                     </deployables>
 
-                    <environmentId>Environments/JBoss-Dev</environmentId>
+                    <environmentId>Environments/Dev-Environment</environmentId>
 
                 </configuration>
             </plugin>
