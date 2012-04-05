@@ -60,7 +60,7 @@
 -->
                         <deployable>
                             <name>ORACLE_JDBC_DRIVER_PATH</name>
-                            <type>was.VariableSpec</type>
+                            <type>wasx.VariableSpec</type>
                             <value>/opt/ws/7.0/universalDriver/oracle</value>
                         </deployable>
 
@@ -92,19 +92,19 @@
 
                         <deployable>
                             <name>petclinic JAAS</name>
-                            <type>was.JAASSpec</type>
+                            <type>wasx.JaasAliasSpec</type>
                             <username>scott</username>
                             <password>tiger</password>
                         </deployable>
 
                         <deployable>
                             <name>Oracle JDBC Provider</name>
-                            <type>was.OracleJDBCProviderSpec</type>
+                            <type>wasx.OracleJdbcProviderSpec</type>
                         </deployable>
 
                         <deployable>
                             <name>petWorker</name>
-                            <type>was.WorkManagerSpec</type>
+                            <type>wasx.WorkManagerSpec</type>
                             <jndiName>worker/petWorker</jndiName>
                             <numAlarmThreads>1</numAlarmThreads>
                             <minThreads>0</minThreads>
@@ -129,7 +129,7 @@
 
                         <deployable>
                             <name>Dev Configuration</name>
-                            <type>was.ServerConfigurationSettings</type>
+                            <type>wasx.ServerConfigurationSpec</type>
                             <JavaVirtualMachine_maximumHeapSize>128</JavaVirtualMachine_maximumHeapSize>
                             <JavaVirtualMachine_initialHeapSize>23</JavaVirtualMachine_initialHeapSize>
                             <WebContainer_enableServletCaching>true</WebContainer_enableServletCaching>
@@ -138,7 +138,7 @@
 
                         <deployable>
                             <name>petListenerPort</name>
-                            <type>was.ListenerPortSpec</type>
+                            <type>wasx.ListenerPortSpec</type>
                             <connectionFactoryJNDIName>petWmqQcf</connectionFactoryJNDIName>
                             <destinationJNDIName>petQueue</destinationJNDIName>
                             <maxMessages>100</maxMessages>
